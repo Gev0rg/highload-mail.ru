@@ -256,6 +256,8 @@ Files   | Файлы хранить в kv blob-storage | s3
 
 ## 8. Схема проекта <a name="8"></a>
 
+![image](project_scheme.png)
+
 ## 9. Обеспечение надежности <a name="9"></a>
 
 ## 10. Расчет ресурсов <a name="10"></a>
