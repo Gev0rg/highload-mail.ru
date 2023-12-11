@@ -234,11 +234,11 @@ bigint    | bigint array[5]      | bigint   | bigint        | varchar(50) | varc
 
 Таблица | Решение | Технология | Индексы | Шардинг |
 ------- | ------- | ---------- | ------- | ------- |
-MailBox | Денормолизуем бд, убрав таблицу таблицу User и перенеся все поля в таблицу MailBox, также перенесем сюда же содержимое таблицы Folders в виде [{ folderId, name }] | postgresql | email | boxId |
+MailBox | Денормолизуем бд, убрав таблицу таблицу User и перенеся все поля в таблицу MailBox, также перенесем сюда же содержимое таблицы Folders в виде [{ folderId, name }] | postgresql | email | email |
 Letter  | В таблице Letter добавим поле files, в котором хранится массив структур прикрепленных к письму файлов ({ id файла, имя файла }) | postgresql | - | letterId |
-HotLetter | Для быстрой выдачи последних писем, выделим отдельную таблицу с названием и телом письма | postgresql | date | letterId |
-SearchLetter | Для полнотекстового поиска писем по немполному совпадению используем Elasticsearch | elasticsearch | name, body | letterId |
-FilesMeta | Необходимо хранить мета-данные файла, такие как имя, url в s3, id письма для проверки доступа к файлу, а также массив пользователей, имеющих доступ к файлу | postgresql | url | fileId |
+HotLetter | Для быстрой выдачи последних писем, выделим отдельную таблицу с названием и телом письма | postgresql | date | date |
+SearchLetter | Для полнотекстового поиска писем по немполному совпадению используем Elasticsearch | elasticsearch | name, body | name |
+FilesMeta | Необходимо хранить мета-данные файла, такие как имя, url в s3, id письма для проверки доступа к файлу, а также массив пользователей, имеющих доступ к файлу | postgresql | url | url |
 Files   | Файлы хранить в kv blob-storage (s3) | s3mail.ru (собственное) | - | - |
 Sessions | Сессии пользователей | Reddis | - | session_id |
 
